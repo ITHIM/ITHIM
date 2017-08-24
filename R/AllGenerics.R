@@ -1,6 +1,23 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#' Retrieves the mean travel activity
+#'
+#' Retrieves the mean travel activity
+#'
+#' @param object A ParameterSet object
+#'
+#' @return Mean travel activity
+#'
+#' @note For a list of parameter names use \code{getParameterNames}.
+#'
+#' @export
+#' @docType methods
+#' @rdname getTravelActivity-methods
+setGeneric("getTravelActivity", function(object) standardGeneric("getTravelActivity"))
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #' Update an ITHIM object
 #'
 #' Takes an ITHIM object as input and returns a new ITHIM object with

@@ -6,9 +6,9 @@ setMethod("show", signature(object="ParameterSet"), function(object){
     cat(c("Walking:\n  Mean = ", round(object@meanWalk,2), " min./week\n"), sep = "")
     cat(c("Cycling:\n  Mean = ", round(object@meanCycle,2), " min./week"), sep = "")
     cat("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
-    cat(c("Travel Activity:\n  Mean = ", round(object@metWalk*object@meanWalk/60 + object@metCycle*object@meanCycle/60,2), " MET-hrs./week\n"), sep = "")
+    cat(c("Travel Activity:\n  Mean = ", round(getTravelActivity(object),2), " MET-hrs./week\n"), sep = "")
     cat(c("Leisure Activity:\n  Mean = ", round(object@meanLeisure,2), " MET-hrs./week\n"), sep = "")
-    cat(c("Total Activity:\n  Mean = ", round(object@metWalk*object@meanWalk/60 + object@metCycle*object@meanCycle/60 + object@meanLeisure,2), " MET-hrs./week"), sep = "")
+    cat(c("Total Activity:\n  Mean = ", round(getTravelActivity(object) + object@meanLeisure,2), " MET-hrs./week"), sep = "")
     cat("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
     cat("Coefficients of Variation:\n")
     cat(c("  Travel Activity: ", round(object@cvTravel,2), "\n"), sep = "")
@@ -35,7 +35,13 @@ setMethod("show", signature(object="ParameterSet"), function(object){
     cat(c(slotNames(object), "\n"), sep = ", ")
     cat("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
 })
-
+#' @rdname getTravelActivity-methods
+#' @aliases getTravelActivity
+#' @export
+setMethod("getTravelActivity", signature(object = "ParameterSet"), function(object){
+    travelActivity <- object@metWalk*object@meanWalk/60 + object@metCycle*object@meanCycle/60
+    return(travelActivity)
+})
 #' @export
 setAs("ParameterSet", "list", function(from) list(Rwt = from@Rwt, Rct = from@Rct, meanWalk = from@meanWalk,
     meanCycle = from@meanCycle, cv = from@cv, cvNonTravel = from@cvNonTravel,
