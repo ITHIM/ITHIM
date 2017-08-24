@@ -15,5 +15,8 @@ setClass("ParameterSet", representation(pAT = "numeric",
                                         cvTravel = "numeric",
                                         meanLeisure = "numeric",
                                         cvLeisure = "numeric",
-                                        quantiles = "vector"
+                                        alpha = "numeric",
+                                        k = "numeric",
+                                        quantiles = "vector",
+                                        label = "character"
                                         ))
