@@ -35,6 +35,24 @@ setGeneric("getQuantilesMixture", function(object) standardGeneric("getQuantiles
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#' Retrieves the quantiles of the mixture distibution
+#'
+#' Retrieves the quantiles of the mixture distibution
+#'
+#' @param baseline ps
+#' @param scenario ps
+#'
+#' @return Foo
+#'
+#' @note For a list of parameter names use \code{getParameterNames}.
+#'
+#' @export
+#' @docType methods
+#' @rdname computeAF-methods
+setGeneric("computeAF", function(baseline, scenario) standardGeneric("computeAF"))
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #' Update an ITHIM object
 #'
 #' Takes an ITHIM object as input and returns a new ITHIM object with

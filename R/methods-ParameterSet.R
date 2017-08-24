@@ -49,6 +49,13 @@ setMethod("getQuantilesMixture", signature(object = "ParameterSet"), function(ob
     df <- ITHIM:::getQuantilesMixtureFunction(p.AT = object@pAT, mean.AT = getTravelActivity(object), sd.AT = object@cvTravel*getTravelActivity(object), mean.NT = object@meanLeisure, sd.NT = object@cvLeisure*object@meanLeisure, prob = object@quantiles)
     return(df$quantiles)
 })
+#' @rdname computeAF-methods
+#' @aliases computeAF
+#' @export
+setMethod("computeAF", signature(baseline = "ParameterSet", scenario = "ParameterSet"), function(baseline, scenario){
+    AF <- computeAFFunction(baseline, scenario)
+    return(AF)
+})
 #' @export
 setAs("ParameterSet", "list", function(from) list(Rwt = from@Rwt, Rct = from@Rct, meanWalk = from@meanWalk,
     meanCycle = from@meanCycle, cv = from@cv, cvNonTravel = from@cvNonTravel,
