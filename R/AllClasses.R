@@ -20,3 +20,17 @@ setClass("ParameterSet", representation(pAT = "numeric",
                                         quantiles = "vector",
                                         label = "character"
                                         ))
+#' The ITHIM class
+#'
+#' Foo.
+#'
+#' This line and the next ones go into the details.
+#' This line thus appears in the details as well.
+#'
+#' @name ITHIM
+#' @rdname ITHIM
+#' @aliases ITHIM-class
+#' @exportClass ITHIM
+setClass("ITHIM",
+         prototype = prototype(elementType = "ParameterSet"),
+         contains = "list")

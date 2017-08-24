@@ -1,6 +1,6 @@
 setMethod("show", signature(object="ParameterSet"), function(object){
     cat("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
-    cat("~~~~~ Physical Activity ~~~~~~~~~~~~~~~~~~~~~~~~~\n")
+    cat(object@label, "\n")
     cat("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
     cat(c("Proportion of Active Travelers = ", round(object@pAT,2),"\n"), sep = "")
     cat(c("Walking:\n  Mean = ", round(object@meanWalk,2), " min./week\n"), sep = "")
