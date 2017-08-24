@@ -24,19 +24,19 @@ for( i in 1:1e4){
 t.vec <- at.vec + nt.vec
 
 n <- 1e2
-#prob <- seq(0,1,length.out=n)
 quantiles <- quantile(t.vec, prob = prob)
 D <- data.frame(quantiles = quantiles, prob = prob)
 return(D)
 
 }
 
-computeAF <- function(p.AT.baseline, p.AT.scenario, mean.AT.baseline, mean.AT.scenario, sd.AT.baseline, sd.AT.scenario, mean.NT.baseline, mean.NT.scenario, sd.NT.baseline, sd.NT.scenario, alpha, k){
-    D.baseline <- getQuantilesMixture(p.AT = p.AT.baseline, mean.AT = mean.AT.baseline, sd.AT = sd.AT.baseline, mean.NT = mean.NT.baseline, sd.NT = sd.NT.baseline)
-    RR.baseline <- getRR(D.baseline$quantiles, alpha = alpha, k = k)
-    D.scenario <- getQuantilesMixture(p.AT = p.AT.scenario, mean.AT = mean.AT.scenario, sd.AT = sd.AT.scenario, mean.NT = mean.NT.scenario, sd.NT = sd.NT.scenario)
-    RR.scenario <- getRR(D.scenario$quantiles, alpha = alpha, k = k)
+getRR <- function(x,alpha,k){
+    return(exp(alpha*(x^k)))
+}
+
+computeAF <- function(baseline, scenario){
+    RR.baseline <- getRR(getQuantilesMixture(baseline), alpha = baseline@alpha, k = baseline@k)
+    RR.scenario <- getRR(getQuantilesMixture(scenario), alpha = scenario@alpha, k = scenario@k)
     AF <- 1 - sum(RR.scenario)/sum(RR.baseline)
     return(AF)
 }
-
