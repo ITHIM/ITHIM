@@ -15,9 +15,5 @@ setClass("ParameterSet", representation(pAT = "numeric",
                                         cvTravel = "numeric",
                                         meanLeisure = "numeric",
                                         cvLeisure = "numeric",
-                                        burden = "data.frame",
-                                        quantiles = "vector",
-                                        roadInjuries = "array",
-                                        distRoadType = "array",
-                                        safetyInNumbers = "array"
+                                        quantiles = "vector"
                                         ))
