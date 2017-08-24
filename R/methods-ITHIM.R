@@ -3,6 +3,14 @@ setMethod("show", signature(object="ITHIM"), function(object){
 #  cat("Hello Vargo, this is an ITHIM object.  Currently the methods plot, show, get DALYs and update are available.  This is the show method.  Try plot().  I can't get summary to work.\n", sep = "")
 })
 
+#' @rdname computeAF-methods
+#' @aliases computeAF
+#' @export
+setMethod("computeAF", signature(baseline = "ITHIM", scenario = "ITHIM"), function(baseline, scenario){
+    AF <- mapply(computeAF, baseline, scenario)
+    return(AF)
+})
+
 #' @rdname update-methods
 #' @aliases update
 #' @export
