@@ -2,29 +2,15 @@ setMethod("show", signature(object="ParameterSet"), function(object){
     cat("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
     cat("~~~~~ Physical Activity ~~~~~~~~~~~~~~~~~~~~~~~~~\n")
     cat("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
-    cat(c("Walking:\n  Mean = ", round(object@muwt,2), " min./week\n"), sep = "")
-    cat("  Relative Means = ")
-    cat(head(round(object@Rwt,2), n = 3), "...", sep = ", ")
+    cat(c("Walking:\n  Mean = ", round(object@meanWalk,2), " min./week\n"), sep = "")
     cat("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
-    cat(c("Cycling:\n  Mean = ", round(object@muct,2), " min./week\n"), sep = "")
-    cat("  Relative Means = ")
-    cat(head(round(object@Rct,2), n = 3), "...", sep = ", ")
+    cat(c("Cycling:\n  Mean = ", round(object@meanCycle,2), " min./week\n"), sep = "")
     cat("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
-    cat(c("Physical Activity (non-travel):\n  Mean = ", object@muNonTravel, " MET-hrs./week\n"), sep = "")
-    cat("  Relative Means = ")
-    cat(head(round(object@muNonTravelMatrix,2), n = 3), "...", sep = ", ")
+    cat(c("Leisure Activity:\n  Mean = ", object@meanLeisure, " MET-hrs./week\n"), sep = "")
     cat("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
     cat("Coefficients of Variation:\n")
-    cat(c("  Active Transport: ", round(object@cv,2), "\n"), sep = "")
-    cat(c("  Physical Activity (non-travel): ", round(object@cvNonTravel,2)), sep = "")
-    cat("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
-    if( object@meanType == "referent" ){
-        cat("Means given above are for the referent class \n(women aged 15-30 yrs.).  ")
-    } else if( object@meanType == "overall" ){
-        cat("Means given above are overall means.  ")
-    }else{
-        message("Problem with meanType parameter")
-        }
+    cat(c("  Travel Activity: ", round(object@cvTravel,2), "\n"), sep = "")
+    cat(c("  Leisure Activity: ", round(object@cvLeisure,2)), sep = "")
     cat("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
     cat("\n")
     cat("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
@@ -50,9 +36,9 @@ setMethod("show", signature(object="ParameterSet"), function(object){
 })
 
 #' @export
-setAs("ParameterSet", "list", function(from) list(Rwt = from@Rwt, Rct = from@Rct, muwt = from@muwt,
-    muct = from@muct, cv = from@cv, cvNonTravel = from@cvNonTravel,
-    nAgeClass = from@nAgeClass, muNonTravel = from@muNonTravel, muNonTravelMatrix = from@muNonTravelMatrix, F = from@F,
+setAs("ParameterSet", "list", function(from) list(Rwt = from@Rwt, Rct = from@Rct, meanWalk = from@meanWalk,
+    meanCycle = from@meanCycle, cv = from@cv, cvNonTravel = from@cvNonTravel,
+    nAgeClass = from@nAgeClass, meanLeisure = from@meanLeisure, meanLeisureMatrix = from@meanLeisureMatrix, F = from@F,
     GBD = from@GBD, meanType = from@meanType, quantiles = from@quantiles, roadInjuries = from@roadInjuries, distRoadType = from@distRoadType, safetyInNumbers = from@safetyInNumbers)
     )
 
@@ -71,7 +57,7 @@ setMethod("update", signature(x = "ParameterSet", parList = "list"), function(x,
 #' @aliases getMeans
 #' @export
 setMethod("getMeans", signature(x = "ParameterSet"), function(x){
-    return(data.frame(walk = x@muwt, cycle = x@muct, nonTravel = x@muNonTravel))
+    return(data.frame(walk = x@meanWalk, cycle = x@meanCycle, nonTravel = x@meanLeisure))
 })
 
 #' @rdname getRoadInjuries-methods
