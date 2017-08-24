@@ -1,4 +1,4 @@
-getQuantilesMixture <- function(p.AT, mean.AT, sd.AT, mean.NT, sd.NT){
+getQuantilesMixtureFunction <- function(p.AT, mean.AT, sd.AT, mean.NT, sd.NT, prob){
 
 meanlog.AT <- log(mean.AT/sqrt(1+sd.AT^2/mean.AT^2))
 sdlog.AT <- sqrt(log(1+sd.AT^2/mean.AT^2))
@@ -24,7 +24,7 @@ for( i in 1:1e4){
 t.vec <- at.vec + nt.vec
 
 n <- 1e2
-prob <- seq(0,1,length.out=n)
+#prob <- seq(0,1,length.out=n)
 quantiles <- quantile(t.vec, prob = prob)
 D <- data.frame(quantiles = quantiles, prob = prob)
 return(D)
@@ -39,3 +39,4 @@ computeAF <- function(p.AT.baseline, p.AT.scenario, mean.AT.baseline, mean.AT.sc
     AF <- 1 - sum(RR.scenario)/sum(RR.baseline)
     return(AF)
 }
+

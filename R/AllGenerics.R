@@ -18,6 +18,23 @@ setGeneric("getTravelActivity", function(object) standardGeneric("getTravelActiv
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#' Retrieves the quantiles of the mixture distibution
+#'
+#' Retrieves the quantiles of the mixture distibution
+#'
+#' @param object A ParameterSet object
+#'
+#' @return Foo
+#'
+#' @note For a list of parameter names use \code{getParameterNames}.
+#'
+#' @export
+#' @docType methods
+#' @rdname getQuantilesMixture-methods
+setGeneric("getQuantilesMixture", function(object) standardGeneric("getQuantilesMixture"))
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #' Update an ITHIM object
 #'
 #' Takes an ITHIM object as input and returns a new ITHIM object with

@@ -42,13 +42,19 @@ setMethod("getTravelActivity", signature(object = "ParameterSet"), function(obje
     travelActivity <- object@metWalk*object@meanWalk/60 + object@metCycle*object@meanCycle/60
     return(travelActivity)
 })
+#' @rdname getQuantilesMixture-methods
+#' @aliases getQuantilesMixture
+#' @export
+setMethod("getQuantilesMixture", signature(object = "ParameterSet"), function(object){
+    df <- ITHIM:::getQuantilesMixtureFunction(p.AT = object@pAT, mean.AT = getTravelActivity(object), sd.AT = object@cvTravel*getTravelActivity(object), mean.NT = object@meanLeisure, sd.NT = object@cvLeisure*object@meanLeisure, prob = object@quantiles)
+    return(df$quantiles)
+})
 #' @export
 setAs("ParameterSet", "list", function(from) list(Rwt = from@Rwt, Rct = from@Rct, meanWalk = from@meanWalk,
     meanCycle = from@meanCycle, cv = from@cv, cvNonTravel = from@cvNonTravel,
     nAgeClass = from@nAgeClass, meanLeisure = from@meanLeisure, meanLeisureMatrix = from@meanLeisureMatrix, F = from@F,
     GBD = from@GBD, meanType = from@meanType, quantiles = from@quantiles, roadInjuries = from@roadInjuries, distRoadType = from@distRoadType, safetyInNumbers = from@safetyInNumbers)
     )
-
 #' @rdname update-methods
 #' @aliases update
 #' @export
