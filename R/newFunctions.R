@@ -1,10 +1,16 @@
 getQuantilesMixtureFunction <- function(p.AT, mean.AT, sd.AT, mean.NT, sd.NT, prob){
 
-    meanlog.AT <- log(mean.AT/sqrt(1+sd.AT^2/mean.AT^2))
-    sdlog.AT <- sqrt(log(1+sd.AT^2/mean.AT^2))
+    ## meanlog.AT <- log(mean.AT/sqrt(1+sd.AT^2/mean.AT^2))
+    ## sdlog.AT <- sqrt(log(1+sd.AT^2/mean.AT^2))
 
-    meanlog.NT <- log(mean.NT/sqrt(1+sd.NT^2/mean.NT^2))
-    sdlog.NT <- sqrt(log(1+sd.NT^2/mean.NT^2))
+    ## meanlog.NT <- log(mean.NT/sqrt(1+sd.NT^2/mean.NT^2))
+    ## sdlog.NT <- sqrt(log(1+sd.NT^2/mean.NT^2))
+
+    meanlog.AT <- mean.AT
+    sdlog.AT <- sd.AT
+
+    meanlog.NT <- mean.NT
+    sdlog.NT <- sd.NT
 
     n <- 1e5
     pseudo <- runif(n)

@@ -8,13 +8,12 @@
 #' @aliases ParameterSet-class
 #' @exportClass ParameterSet
 setClass("ParameterSet", representation(pAT = "numeric",
-                                        meanWalk = "numeric",
-                                        meanCycle = "numeric",
+                                        meanLogTA = "numeric",
+                                        meanLogLA = "numeric",
+                                        sdLogTA = "numeric",
+                                        sdLogLA = "numeric",
                                         metWalk = "numeric",
                                         metCycle = "numeric",
-                                        cvTravel = "numeric",
-                                        meanLeisure = "numeric",
-                                        cvLeisure = "numeric",
                                         alpha = "numeric",
                                         k = "numeric",
                                         quantiles = "vector",
