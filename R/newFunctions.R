@@ -14,8 +14,8 @@ getQuantilesMixtureFunction <- function(p.AT, mean.AT, sd.AT, mean.NT, sd.NT, pr
 
     n <- 1e5
     pseudo <- runif(n)
-    at.vec <- ifelse(pseudo > p.AT, 0, rlnorm(n,meanlog = meanlog.AT, sdlog = sdlog.AT))
-    nt.vec <- rlnorm(n,meanlog = meanlog.NT, sdlog = sdlog.NT)
+    at.vec <- ifelse(pseudo > p.AT, 0, rlnorm(n, meanlog = meanlog.AT, sdlog = sdlog.AT))
+    nt.vec <- rlnorm(n, meanlog = meanlog.NT, sdlog = sdlog.NT)
     t.vec <- at.vec + nt.vec
 
     quantiles <- quantile(t.vec, prob = prob)
