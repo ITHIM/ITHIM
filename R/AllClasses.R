@@ -16,7 +16,12 @@ setClass("ParameterSet", representation(pAT = "numeric",
                                         metCycle = "numeric",
                                         alpha = "numeric",
                                         k = "numeric",
+                                        disease = "factor",
+                                        burdenType = "factor",
+                                        burdenValue = "numeric",
                                         quantiles = "vector",
+                                        sex = "factor",
+                                        age = "factor",
                                         label = "character"
                                         ))
 #' The ITHIM class
